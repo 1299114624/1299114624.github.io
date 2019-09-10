@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>lodash 与自封装工具函数 | 个人网站</title>
+    <meta name="description" content="叶硕强">
+    <link rel="icon" href="/logo.png">
+    
+    <link rel="preload" href="/assets/css/0.styles.ab6b4e78.css" as="style"><link rel="preload" href="/assets/js/app.a3cdd393.js" as="script"><link rel="preload" href="/assets/js/16.281586d7.js" as="script"><link rel="prefetch" href="/assets/js/10.d445be6b.js"><link rel="prefetch" href="/assets/js/11.075a3790.js"><link rel="prefetch" href="/assets/js/12.2618d608.js"><link rel="prefetch" href="/assets/js/13.7da82bce.js"><link rel="prefetch" href="/assets/js/14.51d3fe3d.js"><link rel="prefetch" href="/assets/js/15.3bd169c9.js"><link rel="prefetch" href="/assets/js/17.4f248283.js"><link rel="prefetch" href="/assets/js/18.76eb502e.js"><link rel="prefetch" href="/assets/js/19.2a67beeb.js"><link rel="prefetch" href="/assets/js/2.252269c5.js"><link rel="prefetch" href="/assets/js/20.5eb0207c.js"><link rel="prefetch" href="/assets/js/21.becaa6f3.js"><link rel="prefetch" href="/assets/js/22.99a87c8f.js"><link rel="prefetch" href="/assets/js/23.96f76d35.js"><link rel="prefetch" href="/assets/js/24.6115317a.js"><link rel="prefetch" href="/assets/js/3.8a12d0ca.js"><link rel="prefetch" href="/assets/js/4.ef16e515.js"><link rel="prefetch" href="/assets/js/5.ffaa29cf.js"><link rel="prefetch" href="/assets/js/6.0460041e.js"><link rel="prefetch" href="/assets/js/7.dc971161.js"><link rel="prefetch" href="/assets/js/8.017c52f5.js"><link rel="prefetch" href="/assets/js/9.f8549d35.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ab6b4e78.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="个人网站" class="logo"> <span class="site-name can-hide">个人网站</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/articles/" class="nav-link">妙笔生花</a></div><div class="nav-item"><a href="/yuki/" class="nav-link">yuki控件库专栏</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">开发笔记</a></div><div class="nav-item"><a href="/favorite/" class="nav-link">收藏夹</a></div><div class="nav-item"><a href="http://yeshuoqiang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/1299114624" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/articles/" class="nav-link">妙笔生花</a></div><div class="nav-item"><a href="/yuki/" class="nav-link">yuki控件库专栏</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">开发笔记</a></div><div class="nav-item"><a href="/favorite/" class="nav-link">收藏夹</a></div><div class="nav-item"><a href="http://yeshuoqiang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/1299114624" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>lodash 与自封装工具函数</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/notes/docs/Lodash.html#lodash" class="sidebar-link">lodash</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/docs/Lodash.html#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/notes/docs/Lodash.html#main-js" class="sidebar-link">main.js</a></li></ul></li><li><a href="/notes/docs/Lodash.html#自封装工具函数" class="sidebar-link">自封装工具函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/docs/Lodash.html#代码结构" class="sidebar-link">代码结构</a></li><li class="sidebar-sub-header"><a href="/notes/docs/Lodash.html#datahandler-js" class="sidebar-link">dataHandler.js</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="lodash-与自封装工具函数"><a href="#lodash-与自封装工具函数" aria-hidden="true" class="header-anchor">#</a> lodash 与自封装工具函数</h1> <h2 id="lodash"><a href="#lodash" aria-hidden="true" class="header-anchor">#</a> lodash</h2> <p>(友情链接)[http://lodash.think2011.net/]</p> <h3 id="安装"><a href="#安装" aria-hidden="true" class="header-anchor">#</a> 安装</h3> <div class="language-sh extra-class"><pre class="language-text"><code>npm install --save lodash
+</code></pre></div><h3 id="main-js"><a href="#main-js" aria-hidden="true" class="header-anchor">#</a> main.js</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> lodash <span class="token keyword">from</span> <span class="token string">'lodash'</span>
+window<span class="token punctuation">.</span>_ <span class="token operator">=</span> lodash
+</code></pre></div><h2 id="自封装工具函数"><a href="#自封装工具函数" aria-hidden="true" class="header-anchor">#</a> 自封装工具函数</h2> <h3 id="代码结构"><a href="#代码结构" aria-hidden="true" class="header-anchor">#</a> 代码结构</h3> <div class="language- extra-class"><pre class="language-text"><code>├─ main.js
+├─ common
+|  └─ tools.js
+|     └─ dataHandler.js
+</code></pre></div><h3 id="datahandler-js"><a href="#datahandler-js" aria-hidden="true" class="header-anchor">#</a> dataHandler.js</h3> <p>(numeraljs友情链接)[http://numeraljs.com/]</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/** 
+ * @desc 数据处理工具
+ */</span>
+<span class="token keyword">import</span> numeral <span class="token keyword">from</span> <span class="token string">'numeral'</span>
+<span class="token keyword">import</span> <span class="token constant">I18N</span> <span class="token keyword">from</span> <span class="token string">'@/lang/i18n'</span>
+<span class="token comment">/** 
+ * 数字处理
+ */</span>
+<span class="token keyword">const</span> NumberHandler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** 
+     * 处理较大数字
+     * @param {*} input 输入
+     * @param {Boolean} isRangeFormat 是否进行范围处理，默认进行范围处理
+     * @return {String} 输出
+     */</span>
+    <span class="token function-variable function">handleBigData</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">input<span class="token punctuation">,</span> isRangeFormat</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>curLanguage <span class="token operator">===</span> <span class="token string">'en_US'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">numeral</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'0,0'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> isRangeFormat <span class="token operator">!==</span> <span class="token boolean">false</span> <span class="token operator">?</span> num <span class="token punctuation">:</span> <span class="token function">numeral</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'0.00'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'万'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">/** 
+     * 处理数组中较大数字
+     * @param {Array} arr 输入
+     * @return {String} 输出
+     */</span>
+    <span class="token function-variable function">handleBigDataArr</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> item <span class="token keyword">of</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleBigData</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">/** 
+     * 负数处理
+     * @param {String} num 返回数字
+     * @param {String} specReturn 负数返回的特殊值
+     * @return {String} 处理后文本
+     */</span>
+    <span class="token function-variable function">cleanNegaData</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">arnum<span class="token punctuation">,</span> specReturn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> num <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Number</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> specReturn
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> num
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">/** 
+     * 流量处理
+     * @param {String} traffic 流量
+     * @return {String} 处理后文本
+     */</span>
+    <span class="token function-variable function">transTraffic</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">traffic</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>traffic <span class="token operator">||</span> traffic <span class="token operator">===</span> <span class="token string">''</span> <span class="token operator">||</span> traffic <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">'0M'</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>traffic <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>traffic<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'M'</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>traffic <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>traffic<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'G'</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>traffic <span class="token operator">/</span> <span class="token number">1000000</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'T'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">/** 
+     * 文本格式化，若为空或 -1，返回'-'
+     * @param {(String | Number)} num 需要格式化的文本
+     * @return {(String | Number)} tempResult 处理后的文本
+     */</span>
+    <span class="token function">formatUndefinedData</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> num <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">||</span> num <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">'-'</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> tempResult <span class="token operator">=</span> num
+            <span class="token keyword">let</span> tempNum <span class="token operator">=</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>num<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+            tempNum <span class="token operator">=</span> tempNum<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">const</span> digitReg <span class="token operator">=</span> <span class="token regex">/^(-|\+)?\d+(\.\d+)?$/</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>digitReg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>tempNum<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tempResult <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleBigData</span><span class="token punctuation">(</span>tempNum<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> tempResult
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 字符串处理
+ */</span>
+<span class="token keyword">const</span> StringHandler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** 
+     * 处理坐标轴过长字符串
+     * @param {String} input 长字符串
+     * @return {String} 精简后字符串
+     */</span>
+    <span class="token function-variable function">handleChartLongText</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">input</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>input<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">''</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>curLanguage <span class="token operator">===</span> <span class="token string">'zh_CN'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> input<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'...'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>curLanguage <span class="token operator">===</span> <span class="token string">'en_US'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> input<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'...'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> input
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">/** 
+     * 连接字符串
+     * @param {String} str 待连接
+     * @param {String} add 添加
+     * @param {Array} dir 中英文组装
+     * @desc dir[0]:中文 dir[1]:英文 0:after, 1:before
+     * @returns {String} 处理的字符串
+     */</span>
+    <span class="token function-variable function">concatName</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> add<span class="token punctuation">,</span> dir<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span>str <span class="token operator">+</span> add<span class="token punctuation">,</span> add <span class="token operator">+</span> str<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>curLanguage <span class="token operator">===</span> <span class="token string">'zh_CN'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> arr<span class="token punctuation">[</span>dir<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> arr<span class="token punctuation">[</span>dir<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 路径处理
+ */</span>
+<span class="token keyword">const</span> UrlHandler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** 
+     * 获取路径后面带过来的参数
+     * @param {String} name 匹配参数
+     * @return {*} 对应参数的匹配值
+     */</span>
+    <span class="token function-variable function">getUrlParam</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 构造一个含有目标参数的正则表达式对象</span>
+        <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">'(^|&amp;)'</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">'=([^&amp;]*)(&amp;|$)'</span><span class="token punctuation">)</span>
+        <span class="token keyword">const</span> r <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>search<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>reg<span class="token punctuation">)</span> <span class="token comment">//匹配目标参数、</span>
+        <span class="token keyword">const</span> param <span class="token operator">=</span> r <span class="token operator">?</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>r<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">null</span>
+        <span class="token keyword">return</span> param
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 业务处理
+ */</span>
+<span class="token keyword">const</span> BusinessHandler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** 
+     * 直接获取I18N对应值
+     * @param {String} text 入值
+     * @param {String} defaultVal 默认值
+     * @return {String} 国际化
+     */</span>
+    <span class="token function-variable function">getI18NDirect</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">text<span class="token punctuation">,</span> defaultVal</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> defaultVal <span class="token operator">||</span> <span class="token string">'-'</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> upperCaseText <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token constant">I18N</span><span class="token punctuation">[</span>upperCaseText<span class="token punctuation">]</span> <span class="token operator">||</span> defaultVal <span class="token operator">||</span> <span class="token string">'-'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span>
+    NumberHandler<span class="token punctuation">,</span> <span class="token comment">// 数字处理</span>
+    StringHandler<span class="token punctuation">,</span> <span class="token comment">// 字符串处理</span>
+    UrlHandler<span class="token punctuation">,</span> <span class="token comment">// 路径处理</span>
+    BusinessHandler <span class="token comment">// 业务相关特殊处理</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.a3cdd393.js" defer></script><script src="/assets/js/16.281586d7.js" defer></script>
+  </body>
+</html>
